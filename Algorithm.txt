@@ -1,0 +1,228 @@
+HTO-UWSN Hierarchical Task Offloading Algorithm
+
+Inputs:
+- Set of underwater sensor nodes N
+- Generated monitoring tasks Ti
+- Residual energy of node En
+- Task deadline Di
+- Local processing frequency fn
+- Cluster head processing frequency fCH
+- Acoustic data rate Rac
+- Sound propagation speed vsound
+- Energy threshold Eth
+- Computational threshold Cth
+- Weight coefficients alpha, beta, gamma
+
+Output:
+- Energy-efficient task execution with minimized latency
+- Task offloading decisions
+- Network performance metrics
+
+----------------------------------------------------
+Algorithm Steps
+----------------------------------------------------
+
+Step 1:
+Initialize underwater sensor nodes and cluster heads.
+
+Step 2:
+Form clusters using minimum-energy cluster head selection.
+
+Step 3:
+For each generated task Ti:
+
+Represent task as
+
+Ti = (Ci, Di, Pi)
+
+where
+
+Ci = computational demand
+Di = data size / deadline parameter
+Pi = task priority
+
+----------------------------------------------------
+Step 4: Compute Local Execution Cost
+----------------------------------------------------
+
+Compute local processing delay:
+
+L_local = Ci / fn
+
+Compute local processing energy:
+
+E_local = kappa * Ci * fn^2
+
+----------------------------------------------------
+Step 5: Compute Offloading Cost
+----------------------------------------------------
+
+Transmission delay:
+
+L_tx = Di / Rac
+
+Propagation delay:
+
+L_prop = dij / vsound
+
+where
+dij = distance to cluster head
+
+Compute offloading latency:
+
+L_off =
+L_tx
++ L_prop
++ (Ci / fCH)
+
+----------------------------------------------------
+Step 6: Unified Cost Function
+----------------------------------------------------
+
+Compute local decision cost:
+
+J_local =
+alpha(E_local)
++ beta(L_local)
++ gamma max(0,L_local-Di)
+
+Compute offloading cost:
+
+J_off =
+alpha(E_off)
++ beta(L_off)
++ gamma max(0,L_off-Di)
+
+where
+
+alpha controls energy importance
+beta controls latency importance
+gamma penalizes deadline violation
+
+----------------------------------------------------
+Step 7: Offloading Decision
+----------------------------------------------------
+
+If any condition holds:
+
+En < Eth
+
+OR
+
+Ci > Cth
+
+OR
+
+J_off < J_local
+
+Then:
+
+Offload task to cluster head
+
+Schedule task at cluster head
+
+Execute remotely
+
+Else:
+
+Execute task locally
+
+----------------------------------------------------
+Step 8: Update Network State
+----------------------------------------------------
+
+Update:
+
+Residual node energy
+
+Task queues
+
+Cluster loads
+
+Routing state
+
+Neighbor connectivity
+
+----------------------------------------------------
+Step 9: Data Aggregation
+----------------------------------------------------
+
+Cluster heads aggregate sensing data.
+
+Forward processed data to base station.
+
+----------------------------------------------------
+Step 10: Compute Performance Metrics
+----------------------------------------------------
+
+Compute:
+
+Energy Consumption
+
+Latency
+
+Throughput
+
+Packet Delivery Ratio
+
+Resource Utilization
+
+Task Offloading Efficiency
+
+Motion Tracking Accuracy
+
+Physiological Signal Reliability
+
+Feedback Responsiveness
+
+----------------------------------------------------
+End Algorithm
+----------------------------------------------------
+
+Decision Logic Summary
+
+For each task:
+
+Generate task
+
+Evaluate local execution cost
+
+Evaluate offloading cost
+
+Compare costs
+
+Choose lower-cost execution path
+
+Update network state
+
+Repeat until simulation ends
+
+----------------------------------------------------
+Complexity
+----------------------------------------------------
+
+Task decision complexity:
+
+O(n)
+
+for n generated tasks
+
+Cluster-level scheduling complexity:
+
+O(n log n)
+
+with priority scheduling
+
+----------------------------------------------------
+Core Contribution
+----------------------------------------------------
+
+The algorithm jointly optimizes:
+
+1. Energy efficiency
+
+2. Latency
+
+3. Deadline satisfaction
+
+through hierarchical task offloading in underwater wireless sensor networks.

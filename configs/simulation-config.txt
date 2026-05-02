@@ -1,0 +1,12 @@
+NS3 Version: 3.38
+OS: Ubuntu 22.04
+Compiler: g++ 11
+Nodes:100
+Area:100x100 m
+Depth:1-15 m
+Data Rate:10 kbps per node
+MAC: TDMA
+Routing: Hierarchical clustering
+Acoustic propagation speed:1500 m/s
+Spreading factor:1.5
+Simulation time:24 hours
